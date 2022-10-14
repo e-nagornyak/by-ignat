@@ -1,6 +1,6 @@
 {
-  "name": "hw",
-  "homepage": "https://github.com/e-nagornyak/hw-by-ignat.git",
+  "name": "hw01",
+  "homepage": "https://e-nagornyak.github.io/hw-by-ignat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
