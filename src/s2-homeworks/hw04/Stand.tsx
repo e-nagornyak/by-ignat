@@ -95,7 +95,7 @@ const Stand = () => {
                 <div>
                     <SuperCheckbox
                         id={'hw4-super-checkbox-like-old'}
-                        checked={!stateForAllCheckboxes}
+                        checked={stateForAllCheckboxes}
                         onChange={(e) => setChecked(e.currentTarget.checked)}
                     />
                 </div>
