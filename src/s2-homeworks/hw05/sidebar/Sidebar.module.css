@@ -10,14 +10,19 @@
 .nav {
 }
 
+/*Navlink*/
 .nav a {
+    color: green;
+    margin-right: 10px;
 }
 
 .nav a:hover {
 }
 
 .nav a.active {
+    color: #0066cc;
 }
+
 .close {
 }
 
