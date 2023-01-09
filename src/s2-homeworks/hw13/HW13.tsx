@@ -54,8 +54,8 @@ const HW13 = () => {
                 } else if (e.response.status === 0) {
                     setImage(errorUnknown)
                     setCode('Error!')
-                    setInfo("AxiosError")
-                    setText("Network Error")
+                    setInfo(e.name)
+                    setText(e.message)
                 }
                 // дописать
             })
