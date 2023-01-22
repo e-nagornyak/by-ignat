@@ -1,9 +1,9 @@
 import React from 'react'
 
 // добавить в проект иконки и импортировать
-const downIcon = '[\\/]'
-const upIcon = '[/\\]'
-const noneIcon = '[--]'
+const downIcon = 'https://cdn-icons-png.flaticon.com/512/57/57055.png'
+const upIcon = 'https://cdn-icons-png.flaticon.com/512/4655/4655143.png'
+const noneIcon = 'https://cdn-icons-png.flaticon.com/512/25/25756.png'
 
 export type SuperSortPropsType = {
     id?: string
@@ -13,8 +13,17 @@ export type SuperSortPropsType = {
 }
 
 export const pureChange = (sort: string, down: string, up: string) => {
+    if (sort === '') {
+        return down
+    } else if (sort === down) {
+        return up
+    } else if (sort === up) {
+        return ''
+    } else {
+        return down
+    }
     // пишет студент, sort: (click) => down (click) => up (click) => '' (click) => down ...
-    return up // исправить
+    // return up // исправить
 }
 
 const SuperSort: React.FC<SuperSortPropsType> = (
@@ -26,6 +35,7 @@ const SuperSort: React.FC<SuperSortPropsType> = (
     const down = '1' + value
 
     const onChangeCallback = () => {
+
         onChange(pureChange(sort, down, up))
     }
 
@@ -40,13 +50,10 @@ const SuperSort: React.FC<SuperSortPropsType> = (
             id={id + '-sort-' + value}
             onClick={onChangeCallback}
         >
-            {/*сделать иконку*/}
-            {/*<img*/}
-            {/*    id={id + '-icon-' + sort}*/}
-            {/*    src={icon}*/}
-            {/*/>*/}
-
-            {icon} {/*а это убрать*/}
+            <img style={{width: '13px', display: 'inline-block', marginLeft: '5px'}}
+                 id={id + '-icon-' + sort}
+                 src={icon}
+            />
         </span>
     )
 }

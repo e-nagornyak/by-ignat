@@ -51,6 +51,11 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
+                if (res) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                    setLoading(false)
+                }
                 // делает студент
 
                 // сохранить пришедшие данные
@@ -60,6 +65,10 @@ const HW15 = () => {
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({page: newPage, count: newCount})
+        setSearchParams({page: newPage.toString(), count: newCount.toString()}, )
         // делает студент
 
         // setPage(
@@ -72,6 +81,11 @@ const HW15 = () => {
     }
 
     const onChangeSort = (newSort: string) => {
+        setSort(newSort)
+        setPage(1)
+        setSearchParams({page: '1', count: count.toString()}, )
+        const params = Object.fromEntries(searchParams)
+        sendQuery({page: params.page, count: params.count, sort: newSort})
         // делает студент
 
         // setSort(
@@ -115,7 +129,7 @@ const HW15 = () => {
                     totalCount={totalCount}
                     onChange={onChangePagination}
                 />
-
+                <hr/>
                 <div className={s.rowHeader}>
                     <div className={s.techHeader}>
                         tech
@@ -127,7 +141,7 @@ const HW15 = () => {
                         <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
                     </div>
                 </div>
-
+                <hr/>
                 {mappedTechs}
             </div>
         </div>
